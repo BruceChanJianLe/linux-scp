@@ -21,3 +21,7 @@ Copy to remote host from local host.
 ```bash
 scp file.txt remote_username@10.10.0.2:/remote/directory
 ```
+
+## Reference
+
+- https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/
