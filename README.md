@@ -12,7 +12,12 @@ usage: scp [-346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
 
 ## Example
 
-Copy from remote host to local host example
+Copy from remote host to local host.
 ```bash
-scp username@192.168.168.168:/home/user/somefiles .
+scp remote_username@192.168.168.168:/home/hostname/somefiles.txt .
+```
+
+Copy to remote host from local host.
+```bash
+scp file.txt remote_username@10.10.0.2:/remote/directory
 ```
