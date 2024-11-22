@@ -53,7 +53,7 @@ scp -p file.txt remote_username@10.10.0.2:/remote/directory
 rsync also uses ssh for copying!
 
 ```bash
-rsync -av -HAX --progress /etc 192.168.1.123:/tmp
+rsync -va -HAX --progress /etc 192.168.1.123:/tmp
 ```
 
 -a flag for rsync recursive copy with permissions, ownership, symbolic link
