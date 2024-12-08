@@ -52,21 +52,22 @@ scp -p file.txt remote_username@10.10.0.2:/remote/directory
 
 rsync also uses ssh for copying!
 
-```bash
-# Your typical daily task
-rsync -va -HAX --progress /etc 192.168.1.123:/tmp
-# Intensely, when you have many rosbags (remote -> local)
-ssh remote@192.168.10.103 "find /home/developer/bags -name '3d_lidars*.bag'" | parallel -j 8 rsync -vaz --progress remote@192.168.10.103:'{}' .
-# (local -> remote)
-ls 3d_lidars*.bag | parallel -j 8 -vaz -HAX --progress '{}' remote@192.168.10.103:~/Downloads/bags
-```
-
 Flag | Description
 ---| ---
 `-a` | flag for rsync recursive copy with permissions, ownership, symbolic link
 `-H` | flag for hard links
 `-A` | flag for ACLs
 `-X` | flag for extended attributes and SELinux security context
+`-z` | flag for compression of files during transfer
+
+```bash
+# Your typical daily task
+rsync -vaz -HAX --progress /etc 192.168.1.123:/tmp
+# Intensely, when you have many rosbags (remote -> local)
+ssh remote@192.168.10.103 "find /home/developer/bags -name '3d_lidars*.bag'" | parallel -j 8 rsync -vaz -HAX --progress remote@192.168.10.103:'{}' .
+# (local -> remote)
+ls 3d_lidars*.bag | parallel -j 8 -vaz -HAX --progress '{}' remote@192.168.10.103:~/Downloads/bags
+```
 
 ## Note
 
@@ -74,7 +75,7 @@ Flag | Description
 To ensure how it works, you can always do a dry run before the actual copy.
 
 ```bash
-rsync -va -HAX --progress --dry-run /etc 192.168.1.123:/tmp
+rsync -vaz -HAX --progress --dry-run /etc 192.168.1.123:/tmp
 ```
 
 ## Using Non Default Ports
