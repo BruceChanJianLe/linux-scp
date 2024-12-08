@@ -56,10 +56,12 @@ rsync also uses ssh for copying!
 rsync -va -HAX --progress /etc 192.168.1.123:/tmp
 ```
 
--a flag for rsync recursive copy with permissions, ownership, symbolic link
--H flag for hard links
--A flag for ACLs
--X flag for extended attributes and SELinux security context
+Flag | Description
+---| ---
+`-a` | flag for rsync recursive copy with permissions, ownership, symbolic link
+`-H` | flag for hard links
+`-A` | flag for ACLs
+`-X` | flag for extended attributes and SELinux security context
 
 ## Note
 
